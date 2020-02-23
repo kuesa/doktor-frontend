@@ -1,0 +1,8 @@
+/*******************************
+     User Global Variables
+*******************************/
+@primaryColor: #80deea;
+@secondaryColor: #ab47bc;
+@teal: #80deea;
+@blue: #4bacb8;
+@purple: #ab47bc;
