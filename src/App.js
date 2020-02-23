@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import Login from './components/login';
 import Signup from './components/signup';
 import Checkup from './components/checkup';
+import Dashboard from './components/dashboard';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    window.localStorage.getItem('token')
+    localStorage.getItem('token')
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />
@@ -22,7 +23,7 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
         <ProtectedRoute path='/checkup' component={Checkup} />
-        <ProtectedRoute path='/dashboard' component={Checkup} />
+        <ProtectedRoute path='/dashboard' component={Dashboard} />
       </Switch>
     </Router>
   );

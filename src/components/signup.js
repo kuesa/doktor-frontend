@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class Signup extends React.Component {
@@ -53,6 +53,7 @@ class Signup extends React.Component {
     return(
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
+          <Icon name='heartbeat' size='huge' color='blue'/>
           <Header as='h2' color='blue' textAlign='center'>
             Sign Up
           </Header>

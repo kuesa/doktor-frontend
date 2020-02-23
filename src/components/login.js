@@ -26,7 +26,7 @@ class Login extends React.Component {
     };
 
     // Fetch to API with stuff
-    fetch('/createUser', {
+    fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

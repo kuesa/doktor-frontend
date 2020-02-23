@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Grid, Header, Rating, Segment, Dropdown } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Rating, Segment, Dropdown, Message } from 'semantic-ui-react';
 
 const breakOptions = ['0', '1', '2', '3', '4', '5', '7', '8', '9', '10+']
       .map(elem => ({key: elem, text: elem, value: elem === '10+' ? 10 : Number(elem)}));
@@ -15,7 +15,8 @@ class Checkup extends React.Component {
       selectedEnergy: 0,
       selectedBreak: 0,
       sittingTime: 0,
-      sleepHours: 0
+      sleepHours: 0,
+      success: false
     };
   }
 
@@ -45,7 +46,6 @@ class Checkup extends React.Component {
       sittingTime: this.state.sittingTime,
       sleepHours: this.state.sleepHours
     }
-    console.dir(data);
 
     // Fetch to API with stuff
     fetch('/submitCheckup', {
@@ -57,7 +57,8 @@ class Checkup extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      this.props.history.push('/success');
+      this.setState({success: true});
+      setTimeout(() => {this.props.history.push('/dashboard')}, 2000);
     })
     .catch(err => {
       console.error(err);
@@ -71,6 +72,7 @@ class Checkup extends React.Component {
           <Header as='h2' color='blue' textAlign='center'>
             Daily Checkup
           </Header>
+          {this.state.success ? <Message success header='Thank You!' content='Checkup Submission Successful' /> : null}
           <Form size='large'>
             <Segment>
               <Form.Field>
